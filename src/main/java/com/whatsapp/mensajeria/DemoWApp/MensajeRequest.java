@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MensajeRequest {
-    private String sender;
+    private String fromUser;
+    private String toUser;
     private String message;
 }

@@ -1,6 +1,6 @@
 package com.whatsapp.mensajeria.DemoWApp.config;
 
-import com.whatsapp.mensajeria.DemoWApp.Mensaje;
+import com.whatsapp.mensajeria.DemoWApp.mensaje.Mensaje;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

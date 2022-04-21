@@ -1,5 +1,6 @@
 package com.whatsapp.mensajeria.DemoWApp;
 
+import com.whatsapp.mensajeria.DemoWApp.mensaje.Mensaje;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +22,14 @@ public class MensajeController {
 
     @PostMapping
     public void publish(@RequestBody MensajeRequest request){
-        Mensaje mensaje = new Mensaje(request.getSender(),request.getMessage(), LocalDateTime.now().toString());
+        //Mensaje mensaje = new Mensaje(request.getSender(),request.getMessage(), LocalDateTime.now().toString());
+        Mensaje mensaje = Mensaje.builder()
+                .fromUser(request.getFromUser())
+                .toUser(request.getToUser())
+                .message(request.getMessage())
+                .timestamp(LocalDateTime.now())
+                .build();
+
         kafkaTemplate.send("ejemploTopic",mensaje);
     }
 }
